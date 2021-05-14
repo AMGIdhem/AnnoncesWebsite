@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>STUDEX</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+</head>
+<body>
+
+<div layout:fragment="pageContent">
+
+
+	<a th:href="@{login}"> Etudiant </a>
+	<a th:href="@{login}"> Annonceur </a>
+	<a th:href="@{inscription}"> Inscription </a>
+	<h1>STUDEX</h1>
+	<div class="container spacer">
+		<form th:action="@{search}" method="get">
+			<div class="form-group">
+				<label>Mot Clé:</label> <input type="text" name="motCle" th:value="${motCle}"/>
+				<button type="submit">Chercher</button>
+			</div>
+		</form>
+	</div>
+	
+		<div class="card m-5" th:each="a:${annonces}">
+			<div class="row card-header">
+				<div class="col-md-10" th:text="${a.titre}"></div>
+				<div class="col-md-1"><button type="button" class="btn btn-warning" style="height:30px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Profil d'annonceur</a></button></div>
+			</div>
+			
+			<div class="row card-body">
+				<!--IMAGE-->
+				<div class="col-md-5"><img style="border: 3px solid #555;;" th:src="@{getPhoto(id=${a.id})}" width="500" height="300"></div>
+				<!--INPUTS-->
+				<div class="col-md-5 ml-3">
+					<div  th:text="${a.quartier.nom}"></div>
+					<div  th:text="${a.typeLogement.type}"></div><br><br>
+					
+					
+					<div  th:text="${a.description}"></div>
+					<!--boutton de suppression (on va utiliser thymeleaf secutiyy extra pour cacher selon role)-->	
+				</div>
+				<!--BOUTTONS-->
+				<div class="col-md-1">
+				<div  th:text="${a.prix}"></div>
+				<button type="button" class="btn btn-info" style="height:40px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Plus d'infos</a></button><br>
+				<button type="button" class="btn btn-primary mt-2" style="height:100px;width:200px"><a th:href="@{etudiant/deposer(id=${a.id})}" style="color: white;">Déposer <br> mon dossier</a></button>
+								
+					
+				</div>	
+			</div>
+			
+					
+			<div class="card-footer">
+						
+					
+					
+					
+					
+			
+		
+		</div>
+	</div>
+	<!--barre de pagination-->
+	<div class="container">
+				<div class="card m-5">
+				
+				<div class="card-body">
+	
+				
+	
+	
+				<ul class="nav nav-pills">
+					<li th:each="page,status:${pages}"><!--status qui va nou permettre de recuperer indice de page-->
+					<!--au lieu de faire "patients?page=1 on fait ecriture ci dessous"-->
+					
+						<!-- pour affichage sans recherche
+						<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" class="btn" 
+						th:href="@{patients(page=${status.index})}" th:text="${status.index}"></a>
+						-->
+						
+						<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" class="btn" 
+						th:href="@{annonces(page=${status.index},size=${size})}" th:text="${status.index}"></a>
+					</li>
+				</ul>
+		</div>
+	</div></div>
+	
+	
+		
+<!-- 		<ul class="nav nav-pills"> -->
+<!-- 			<li th:class="${p==pageCourante}?active:''" th:each="p:${pages}"> -->
+<!-- 				<a th:text="${p}" th:href="@{Index(page=${p},motCle=${motCle})}"></a> -->
+<!-- 			</li> -->
+<!-- 		</ul> -->
+	
+
+	
+</div>
+</body>
+</html>

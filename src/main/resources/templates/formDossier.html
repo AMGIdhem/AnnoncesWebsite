@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>Déposer votre dossier</title>
+</head>
+<body>
+<<<<<<< HEAD
+	<div layout:fragment="pageContent" class="container">
+	</div>
+=======
+	
+	<form th:action="@{saveDossier}" method="post" th:object="${dossier}">
+			<h2>Fiche locataire</h2>
+		<label> Date Entrée  </label> <input type="date" th:field="*{dateEntree}"/> <br>
+		<label> Etablissement </label> <input type="text" th:field="*{etablissement}"/> <br>
+			<h2> Garant </h2>
+		<label> Garant nom </label> <input type="text" th:field="*{garantNom}"/> <br>
+		<label> Garant Prenom </label> <input type="text" th:field="*{garantPrenom}"/> <br>
+		<label> Garant Relation </label> 
+		<select name="relation">
+			<option value="père" >père</option>
+			<option value="mère" >mère</option>
+			<option value="frère" >frère</option>
+			<option value="soeur" >soeur</option>
+			<option value="autre" >autre</option>
+		</select> <br>
+		<input name="idAnnonce" type="hidden" th:value="${idAnnonce}"/>
+		<button type="submit">Enregistrer</button>
+	</form>
+>>>>>>> branch 'master' of https://github.com/AMGIdhem/appAnnonces.git
+</body>
+</html>

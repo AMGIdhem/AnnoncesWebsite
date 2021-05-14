@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<form th:action="@{formAnnonce}" method="post">
+		<label> Ville  </label> 
+			<select name="ville">
+				<option th:each="v:${villes}" th:value="${v.id}" th:text="${v.ville}"></option>
+			</select> <br>
+		<button type="submit">Valider</button>
+	</form>
+</body>
+</html>

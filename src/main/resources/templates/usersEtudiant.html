@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
+<head>
+<meta charset="utf-8">
+<title>Utilisateurs</title>
+</head>
+<body>
+<div layout:fragment="pageContent" class="container">
+		Les etudiants
+		<table>
+			<thead>
+				<tr>
+					<th>Username</th>
+					<th>Email</th>
+					<th>Tel</th>
+					<th>Date de naissance</th>
+					<th>Nationalite</th>
+					<th>Adresse</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr th:each="u:${usersEt}">
+					<td th:text="${u.username}"></td>
+					<td th:text="${u.email}"></td>
+					<td th:text="${u.tel}"></td>
+					<td th:text="${u.dateNaissance}"></td>
+					<td th:text="${u.nationalite}"></td>
+					<td th:text="${u.adresse}"></td>
+					<td><a onclick="return confirm('Etes vous sure ?')" th:href="@{supprimer(username=${u.username})}">Supprimer Compte</a></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+		
+</div>
+</body>
+</html>

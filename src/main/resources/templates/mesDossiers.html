@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Type Logement</th>
+					<th>Quartier</th>
+					<th>Adresse</th>
+					<th>Titre</th>
+					<th>Prix</th>
+					<th>Description</th>
+					<th>Photo</th>
+				</tr>
+			</thead>
+
+			<tbody>
+
+				<tr th:each="d:${mesDossiers}">
+					<td th:text="${d.id}"></td>
+					<td th:text="${d.dateEntree}"></td>
+					<td th:text="${d.etablissement}"></td>
+					<td th:text="${d.garantNom}"></td>
+					<td th:text="${d.garantPrenom}"></td>
+					<td th:text="${d.garantRelation}"></td>
+					<td th:text="${d.annonce.titre}"></td>
+					<td><a onclick="return confirm('Etes vous sure ?')" th:href="@{supprimer(id=${d.id})}">Supprimer</a></td>
+					<td><a th:href="@{edit(id=${d.id})}">Edit</a></td>
+				</tr>
+			</tbody>
+		</table>
+
+</body>
+</html>
