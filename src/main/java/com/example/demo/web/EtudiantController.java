@@ -82,4 +82,17 @@ public class EtudiantController {
 		model.addAttribute("mesDossiers", mesDossiers);
 		return "mesDossiers";
 	}
+	
+	@RequestMapping(value="/supprimer")
+	public String supprimer(Long id) {
+		dossierRepository.deleteById(id);
+		return "redirect:mesDossiers";
+	}
+	
+	@RequestMapping(value="/edit")
+	public String edit(Long id,Model model) {
+		Dossier dossier = dossierRepository.getOne(id);
+		model.addAttribute("dossier", dossier);
+		return "editDossier";
+	}
 }

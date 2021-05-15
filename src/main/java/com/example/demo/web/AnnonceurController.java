@@ -165,7 +165,8 @@ public class AnnonceurController {
 				httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
 		String username=securityContext.getAuthentication().getName();
 		User monProfil = userService.findByUsername(username);
-		model.addAttribute("monProfil", monProfil);
+		model.addAttribute("user", monProfil);
 		return "profilAnnonceur";
 	}
+	
 }

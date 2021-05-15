@@ -13,6 +13,7 @@ public class Annonce {
 	private String adresse;
 	private String titre;
 	private double prix;
+	private String tel;
 	private String description;
 	private String photo;
 	private String photo1;
@@ -116,6 +117,15 @@ public class Annonce {
 	public void setQuartier(Quartier quartier) {
 		this.quartier = quartier;
 	}
+
+	public String getTel() {
+		return tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	
 	
 	
 }

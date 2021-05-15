@@ -1,30 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-<meta charset="utf-8">
-<title>DÃ©poser votre dossier</title>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
 </head>
 <body>
-
-
-	
-	<form th:action="@{saveDossier}" method="post" th:object="${dossier}">
+	<form th:action="@{editDossier}" method="post" th:object="${dossier}">
 			<h2>Fiche locataire</h2>
-		<label> Date EntrÃ©e  </label> <input type="date" th:field="*{dateEntree}"/> <br>
+		<label> Date Entrée  </label> <input type="date" th:field="*{dateEntree}"/> <br>
 		<label> Etablissement </label> <input type="text" th:field="*{etablissement}"/> <br>
 			<h2> Garant </h2>
 		<label> Garant nom </label> <input type="text" th:field="*{garantNom}"/> <br>
 		<label> Garant Prenom </label> <input type="text" th:field="*{garantPrenom}"/> <br>
 		<label> Garant Relation </label> 
 		<select name="relation">
-			<option value="pÃ¨re" >pÃ¨re</option>
-			<option value="mÃ¨re" >mÃ¨re</option>
-			<option value="frÃ¨re" >frÃ¨re</option>
+			<option value="père" >père</option>
+			<option value="mère" >mère</option>
+			<option value="frère" >frère</option>
 			<option value="soeur" >soeur</option>
 			<option value="autre" >autre</option>
 		</select> <br>
 		<input name="idAnnonce" type="hidden" th:value="${idAnnonce}"/>
-		<button type="submit">Enregistrer</button>
+		<button type="submit">Modifer</button>
 	</form>
 
 </body>
