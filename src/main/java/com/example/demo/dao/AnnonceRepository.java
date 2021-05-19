@@ -13,4 +13,5 @@ import com.example.demo.entities.Annonce;
 public interface AnnonceRepository extends JpaRepository<Annonce, Long> {
 	public List<Annonce> findByUser_username(String username);
 	
+	
 }

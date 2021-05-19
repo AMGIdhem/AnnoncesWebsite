@@ -18,6 +18,10 @@ public class Annonce {
 	private String photo;
 	private String photo1;
 	private String photo2;
+	private String etage;
+	private String meuble;
+	private float surface;
+	private int nombrePersonnes;
 	@ManyToOne
 	private User user;
 	@ManyToOne 
@@ -28,6 +32,56 @@ public class Annonce {
 	public Annonce() {
 		
 	}
+	
+	
+
+	public String getEtage() {
+		return etage;
+	}
+
+
+
+	public void setEtage(String etage) {
+		this.etage = etage;
+	}
+
+
+
+	public String getMeuble() {
+		return meuble;
+	}
+
+
+
+	public void setMeuble(String meuble) {
+		this.meuble = meuble;
+	}
+
+
+
+	public float getSurface() {
+		return surface;
+	}
+
+
+
+	public void setSurface(float surface) {
+		this.surface = surface;
+	}
+
+
+
+	public int getNombrePersonnes() {
+		return nombrePersonnes;
+	}
+
+
+
+	public void setNombrePersonnes(int nombrePersonnes) {
+		this.nombrePersonnes = nombrePersonnes;
+	}
+
+
 
 	public Long getId() {
 		return id;

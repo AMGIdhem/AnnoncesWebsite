@@ -155,7 +155,30 @@ public class AnnonceurController {
 	public String edit(Long id,Model model) {
 		Annonce an = annonceRepository.getOne(id);
 		model.addAttribute("annonce", an);
+		model.addAttribute("idOldAn",an.getId());
 		return "editAnnonce";
+	}
+	
+	@RequestMapping(value="/editAnnonce", method=RequestMethod.POST)
+	public String editAnnonce(@Valid Annonce newAn,
+			@RequestParam(name="idOldAn")Long idOldAn,
+			HttpServletRequest httpServletRequest) throws Exception {
+		
+		Annonce oldAn = annonceRepository.getOne(idOldAn);
+		oldAn.setAdresse(newAn.getAdresse());
+		oldAn.setTitre(newAn.getTitre());
+		oldAn.setPrix(newAn.getPrix());
+		oldAn.setDescription(newAn.getDescription());
+		oldAn.setTel(newAn.getTel());
+		oldAn.setEtage(newAn.getEtage());
+		oldAn.setMeuble(newAn.getMeuble());
+		oldAn.setSurface(newAn.getSurface());
+		oldAn.setNombrePersonnes(newAn.getNombrePersonnes());
+
+		annonceRepository.save(oldAn);
+
+		return "redirect:mesAnnonces";
+		
 	}
 	
 	@RequestMapping(value="/monProfil")
@@ -166,7 +189,30 @@ public class AnnonceurController {
 		String username=securityContext.getAuthentication().getName();
 		User monProfil = userService.findByUsername(username);
 		model.addAttribute("user", monProfil);
+		model.addAttribute("idOldUs", monProfil.getUsername());
 		return "profilAnnonceur";
+	}
+	
+	@RequestMapping(value="/editAnnonceur", method=RequestMethod.POST)
+	public String editAnnonceur(@Valid User newUs,
+			@RequestParam(name="idOldUs")String idOldUs,
+			HttpServletRequest httpServletRequest) throws Exception {
+		
+		User oldUs = userRepository.getOne(idOldUs);
+		oldUs.setUsername(newUs.getUsername());
+		oldUs.setPassword(newUs.getPassword());
+		oldUs.setMatchingPassword(newUs.getMatchingPassword());
+		oldUs.setTel(newUs.getTel());
+		oldUs.setEmail(newUs.getEmail());
+		oldUs.setAdresse(newUs.getAdresse());
+		oldUs.setEmploi(newUs.getEmploi());
+		oldUs.setDateNaissance(newUs.getDateNaissance());
+		oldUs.setNationalite(newUs.getNationalite());
+
+		userRepository.save(oldUs);
+
+		return "redirect:mesAnnonces";
+		
 	}
 	
 }

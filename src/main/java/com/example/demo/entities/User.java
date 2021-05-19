@@ -37,11 +37,13 @@ public class User {
 	private String email;
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date dateNaissance;
-	private int tel;
+	private String tel;
 	private String nationalite;
 	private String adresse;
 	private String emploi;
-	private int cin;
+	private String cne;
+	private String etablissement;
+	private String niveau;
 	
 	public String getEmploi() {
 		return emploi;
@@ -97,12 +99,6 @@ public class User {
 	public void setDateNaissance(Date dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
-	public int getTel() {
-		return tel;
-	}
-	public void setTel(int tel) {
-		this.tel = tel;
-	}
 	public String getNationalite() {
 		return nationalite;
 	}
@@ -121,9 +117,33 @@ public class User {
 	public void setMatchingPassword(String matchingPassword) {
 		this.matchingPassword = matchingPassword;
 	}
+	public String getTel() {
+		return tel;
+	}
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+	public String getCne() {
+		return cne;
+	}
+	public void setCne(String cne) {
+		this.cne = cne;
+	}
+	public String getEtablissement() {
+		return etablissement;
+	}
+	public void setEtablissement(String etablissement) {
+		this.etablissement = etablissement;
+	}
+	public String getNiveau() {
+		return niveau;
+	}
+	public void setNiveau(String niveau) {
+		this.niveau = niveau;
+	}
 	public User(@NotEmpty @Size(min = 5, max = 15) String username, @NotEmpty String password, String matchingPassword,
-			boolean actived, Collection<Role> roles, @NotEmpty @Email String email, Date dateNaissance, int tel,
-			String nationalite, String adresse, String emploi, int cin) {
+			boolean actived, Collection<Role> roles, @NotEmpty @Email String email, Date dateNaissance, String tel,
+			String nationalite, String adresse, String emploi, String cne, String etablissement, String niveau) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -136,15 +156,10 @@ public class User {
 		this.nationalite = nationalite;
 		this.adresse = adresse;
 		this.emploi = emploi;
-		this.cin = cin;
+		this.cne = cne;
+		this.etablissement = etablissement;
+		this.niveau = niveau;
 	}
-	public int getCin() {
-		return cin;
-	}
-	public void setCin(int cin) {
-		this.cin = cin;
-	}
-	
 	
 	
 }
