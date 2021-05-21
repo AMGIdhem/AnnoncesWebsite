@@ -57,6 +57,7 @@ public class EtudiantController {
 	@RequestMapping(value="/saveDossier", method=RequestMethod.POST)
 	public String saveDossier(@Valid Dossier d,
 			HttpServletRequest httpServletRequest,
+			@RequestParam(name="garantRelation") String garantRelation,
 			@RequestParam(name="idAnnonce") Long idAnnonce) throws Exception {
 		HttpSession httpSession = httpServletRequest.getSession();
 		SecurityContext securityContext=(SecurityContext) 

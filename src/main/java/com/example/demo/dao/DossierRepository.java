@@ -9,4 +9,5 @@ import com.example.demo.entities.Dossier;
 
 public interface DossierRepository extends JpaRepository<Dossier, Long> {
 	public List<Dossier> findByUser_username(String username);
+	public List<Dossier> findByAnnonce_id(Long id);
 }

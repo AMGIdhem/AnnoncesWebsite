@@ -28,23 +28,23 @@ public class AppAnnoncesApplication {
 		
 		List<Role> roles = new ArrayList<>();
 		roles.add(roleRepo.getOne("ADMIN"));
-		userRepo.save(new User("admin", "123", true,roles));
-//		TypeLogementRepository typeRepo = ctx.getBean(TypeLogementRepository.class);
-//		typeRepo.save(new TypeLogement("Studio"));
-//		typeRepo.save(new TypeLogement("Chambre"));
-//		typeRepo.save(new TypeLogement("Appartement"));
-//		QuartierRepository quartRepo = ctx.getBean(QuartierRepository.class);
-//		quartRepo.save(new Quartier("Tilila"));
-//		quartRepo.save(new Quartier("El Houda"));
-//		quartRepo.save(new Quartier("Hay Salam"));
-//		RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
-//		roleRepository.save(new Role("ETUDIANT", null));
-//		roleRepository.save(new Role("ANNONCEUR", null));
-//		roleRepository.save(new Role("ADMIN", null));
-//		VilleRepository villeRepo = ctx.getBean(VilleRepository.class);
-//		villeRepo.save(new Ville("Agadir"));
-//		villeRepo.save(new Ville("Marrakech"));
-//		villeRepo.save(new Ville("Casablance"));
+		//userRepo.save(new User("admin", "123", true,roles));
+		TypeLogementRepository typeRepo = ctx.getBean(TypeLogementRepository.class);
+		typeRepo.save(new TypeLogement("Studio"));
+		typeRepo.save(new TypeLogement("Chambre"));
+		typeRepo.save(new TypeLogement("Appartement"));
+		QuartierRepository quartRepo = ctx.getBean(QuartierRepository.class);
+		quartRepo.save(new Quartier("Tilila"));
+		quartRepo.save(new Quartier("El Houda"));
+		quartRepo.save(new Quartier("Hay Salam"));
+		RoleRepository roleRepository = ctx.getBean(RoleRepository.class);
+		roleRepository.save(new Role("ETUDIANT", null));
+		roleRepository.save(new Role("ANNONCEUR", null));
+		roleRepository.save(new Role("ADMIN", null));
+		VilleRepository villeRepo = ctx.getBean(VilleRepository.class);
+		villeRepo.save(new Ville("Agadir"));
+		villeRepo.save(new Ville("Marrakech"));
+		villeRepo.save(new Ville("Casablance"));
 	}
 
 }

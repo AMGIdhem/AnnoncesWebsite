@@ -26,11 +26,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.demo.dao.AnnonceRepository;
+import com.example.demo.dao.DossierRepository;
 import com.example.demo.dao.QuartierRepository;
 import com.example.demo.dao.TypeLogementRepository;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.dao.VilleRepository;
 import com.example.demo.entities.Annonce;
+import com.example.demo.entities.Dossier;
 import com.example.demo.entities.Quartier;
 import com.example.demo.entities.TypeLogement;
 import com.example.demo.entities.User;
@@ -42,6 +44,8 @@ import com.example.demo.service.UserService;
 @RequestMapping("/annonceur")
 @Secured(value={"ROLE_ANNONCEUR"})
 public class AnnonceurController {
+	@Autowired
+	DossierRepository dossierRepository;
 	@Autowired
 	TypeLogementRepository typeLogementRepository;
 	@Autowired
@@ -213,6 +217,13 @@ public class AnnonceurController {
 
 		return "redirect:mesAnnonces";
 		
+	}
+	
+	@RequestMapping(value="/getDossiers")
+	public String getDossiers(Long id,Model model) {
+		List<Dossier> dossiers = dossierRepository.findByAnnonce_id(id);
+		model.addAttribute("dossiers", dossiers);
+		return "dossiersAnnonce";
 	}
 	
 }
