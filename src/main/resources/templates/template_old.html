@@ -93,21 +93,9 @@
                       
                         <a class="dropdown-item" th:href="@{login}" sec:authorize="!isAuthenticated()">Se connecter</a>
                         <a class="dropdown-item" th:href="@{inscription}" sec:authorize="!isAuthenticated()">Créer un compte</a>
-                        <div sec:authorize="hasRole('ROLE_ANNONCEUR')">
-						  <a class="dropdown-item" th:href="@{http://localhost:8080/annonceur/home}" sec:authorize="isAuthenticated()">Espace Utilisateur</a>
-						  <a class="dropdown-item" th:href="@{http://localhost:8080/annonceur/profile}" sec:authorize="isAuthenticated()">Mon Profile</a>	
-						</div>
-                        <div sec:authorize="hasRole('ROLE_ETUDIANT')">
-						  <a class="dropdown-item" th:href="@{getLogedUser}" sec:authorize="isAuthenticated()">Espace Utilisateur</a>
-						  <!--a class="dropdown-item" th:href="@{profile}" sec:authorize="isAuthenticated()">Mon Profile</a-->	
-						</div>
-						<div sec:authorize="hasRole('ROLE_ADMIN')">
-						  <a class="dropdown-item" th:href="@{getLogedUser}" sec:authorize="isAuthenticated()">Espace Utilisateur</a>
-						  <!--a class="dropdown-item" th:href="@{profile}" sec:authorize="isAuthenticated()">Mon Profile</a-->
-						</div>
                         
-                        <a class="dropdown-item" th:href="@{logout}" sec:authorize="isAuthenticated()">Se Déconnecter</a>
-
+                        <a class="dropdown-item" th:href="@{logout}" sec:authorize="isAuthenticated()">Se déconnecter</a>
+                        <a class="dropdown-item" th:href="@{getLogedUser}" sec:authorize="isAuthenticated()">Mon Profile</a>
                       </div>
                     </li>
                   </ul>

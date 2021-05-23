@@ -64,7 +64,7 @@ public class AnnonceurController {
 	String imageDir;
 	
 	@RequestMapping("/home")
-	public String Index(Model model) {
+	public String espaceAnnonceur(Model model) {
 		return "homeAnnonceur";
 	}
 	
@@ -185,8 +185,8 @@ public class AnnonceurController {
 		
 	}
 	
-	@RequestMapping(value="/monProfil")
-	public String monProfil(Model model, HttpServletRequest httpServletRequest) {
+	@RequestMapping(value="/profile")
+	public String monProfileAnnonceur(Model model, HttpServletRequest httpServletRequest) {
 		HttpSession httpSession = httpServletRequest.getSession();
 		SecurityContext securityContext=(SecurityContext) 
 				httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
@@ -194,8 +194,21 @@ public class AnnonceurController {
 		User monProfil = userService.findByUsername(username);
 		model.addAttribute("user", monProfil);
 		model.addAttribute("idOldUs", monProfil.getUsername());
-		return "profilAnnonceur";
+		return "profileAnnonceur";
 	}
+	
+	@RequestMapping(value="/profilem")
+	public String modifierProfileAnnonceur(Model model, HttpServletRequest httpServletRequest) {
+		HttpSession httpSession = httpServletRequest.getSession();
+		SecurityContext securityContext=(SecurityContext) 
+				httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+		String username=securityContext.getAuthentication().getName();
+		User monProfil = userService.findByUsername(username);
+		model.addAttribute("user", monProfil);
+		model.addAttribute("idOldUs", monProfil.getUsername());
+		return "profileAnnonceurModifier";
+	}
+	
 	
 	@RequestMapping(value="/editAnnonceur", method=RequestMethod.POST)
 	public String editAnnonceur(@Valid User newUs,
@@ -215,7 +228,7 @@ public class AnnonceurController {
 
 		userRepository.save(oldUs);
 
-		return "redirect:mesAnnonces";
+		return "redirect:/annonceur/home";
 		
 	}
 	
