@@ -25,7 +25,7 @@
 }
 
 .profile-nav .user-heading {
-    background: #fbc02d;
+    background: rgb(128, 0, 255);
     color: #fff;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
@@ -80,7 +80,7 @@
 
 .profile-nav ul > li > a:hover, .profile-nav ul > li > a:focus, .profile-nav ul li.active  a {
     background: #f8f7f5 !important;
-    border-left: 5px solid #fbc02d;
+    border-left: 5px solid rgb(128, 0, 255);
     color: #89817f !important;
 }
 
@@ -119,7 +119,7 @@
 }
 
 .bio-graph-heading {
-    background: #fbc02d;
+    background: rgb(128, 0, 255);
     color: #fff;
     text-align: center;
     font-style: italic;
@@ -413,9 +413,9 @@ ul.summary-list > li:last-child  {
           </div>
 
           <ul class="nav nav-pills nav-stacked">
-              <li><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-              <li class="active"><a href="#"> <i class="fa fa-edit"></i> Modifier mon profile</a></li>
-              <li><a href="#"> <i class="fa fa-calendar"></i> Mes Annonces <span class="label label-warning pull-right r-activity">9</span></a></li>
+              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/profile"> <i class="fa fa-user"></i> Profile</a></li>
+              <li class="active" style="width: 210px;"><a href="#"> <i class="fa fa-edit"></i> Modifier mon profile</a></li>
+              <li style="width: 210px;"><a href="#"> <i class="fa fa-calendar"></i> Mes Annonces </a></li>
               
           </ul>
       </div>
@@ -424,8 +424,7 @@ ul.summary-list > li:last-child  {
   
   <!--FORMULAIRE-->
   <div class="profile-info col-md-9">
-  <form th:action="@{editAnnonceur}" method="post" th:object="${user}">
-  <input type="hidden" name="idOldUs" th:value="${idOldUs}"/> <br>
+ 
       
       <div class="panel">
           <div class="bio-graph-heading">
@@ -434,6 +433,8 @@ ul.summary-list > li:last-child  {
           <div class="panel-body bio-graph-info">
               <h1>Modification du profile utiliasteur :</h1>
               <div class="row">
+               <form th:action="@{editAnnonceur}" method="post" th:object="${user}">
+  <input type="hidden" name="idOldUs" th:value="${idOldUs}"/> <br>
                   <div class="bio-row">
                       <p><span>Nom </span>: <span><input type="text" /> </span></p>
                   </div>
@@ -462,12 +463,12 @@ ul.summary-list > li:last-child  {
                       <button type="submit">Modifier</button>
                   </div>
 
-                  
+                 </form> 
               </div>
           </div>
       </div>
       
-  </form>   
+     
   </div>
 </div>
 </div>
