@@ -27,12 +27,16 @@ import com.example.demo.entities.Dossier;
 import com.example.demo.entities.Quartier;
 import com.example.demo.entities.TypeLogement;
 import com.example.demo.entities.User;
+import com.example.demo.service.UserService;
 
 @Controller
 @RequestMapping("/etudiant")
 @Secured(value={"ROLE_ETUDIANT"})
-public class EtudiantController {
+public class EtudiantController 
+{
 	
+	@Autowired
+	UserService userService;
 	@Autowired
 	UserRepository userRepository;
 	@Autowired
@@ -53,6 +57,20 @@ public class EtudiantController {
 		model.addAttribute("dossier", new Dossier());
 		return "formDossier";
 	}
+	
+	@RequestMapping(value="/profile")
+	public String monProfileAnnonceur(Model model, HttpServletRequest httpServletRequest) {
+		HttpSession httpSession = httpServletRequest.getSession();
+		SecurityContext securityContext=(SecurityContext) 
+				httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+		String username=securityContext.getAuthentication().getName();
+		User monProfil = userService.findByUsername(username);
+		model.addAttribute("user", monProfil);
+		model.addAttribute("idOldUs", monProfil.getUsername());
+		return "profileEtudiant";
+	}
+	
+	
 	
 	@RequestMapping(value="/saveDossier", method=RequestMethod.POST)
 	public String saveDossier(@Valid Dossier d,

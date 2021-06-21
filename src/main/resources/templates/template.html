@@ -27,34 +27,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="font-size: 20px; color: white; border-left: 0.5px solid white; border-right: 0.5px solid white;" th:href="@{/}">Acceuil</a>
                     </li>
-                    <li class="nav-item dropdown" style="border: 2px solid #5aa0c5;">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                          
-                          <span>
-                              <span style="font-size: 18px; color: white;">Annonces</span>
-                          </span>
-                              
-                          
-                        </a>
-                        <div class="dropdown-menu">
-                        
-                          <a class="dropdown-item" href="/annonces">Offres</a>
-                          
-                          <a class="dropdown-item" href="/annonces">Demandes</a>
-                          
-                        </div>
-                        
-						        <!--<a class="nav-link dropdown-toggle " href="#" style="color: #17a2b8;" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						          Annonces
-						        </a>
-						        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-						          <a class="dropdown-item" href="/annonces">Offres</a>
-						          <div class="dropdown-divider"></div>
-						          <a class="dropdown-item" href="/demandes">Demandes</a>
-						        </div>
-						        -->
-						      
+                    <li class="nav-item" >
+                        <a class="nav-link" href="#" style="font-size: 20px; color: white; border-left: 0.5px solid white; border-right: 0.5px solid white;" th:href="@{/annonces}">Annonces</a>
                     </li>
+                   
                     <li class="nav-item">
                         <a class="nav-link" href="#" style="font-size: 20px; color: white; border-left: 0.5px solid white;;border-right: 0.5px solid white;">Comment ça marche ?</a>
                     </li>
@@ -65,16 +41,14 @@
 
                 <ul class="navbar-nav ml-auto">
                     <!-- Deposit -->
-                    <li class="dropdeposit nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-                          <span>
+                    <li class="dropdeposit nav-item">
+                        <a class="nav-link" href="/annonceur/formAnnonce0">
+                        <div sec:authorize="hasRole('ROLE_ANNONCEUR')">
+						  
                               <span style="font-size: 18px; color: white;">Déposer une annonce</span>
-                          </span>
-                        </a>
-                        <div class="dropdown-menu">
-                          <a class="dropdown-item" th:href="@{formAnnonce}">Déposer une offre</a>
-                          <a class="dropdown-item" th:href="@{formAnnonce}">Déposer une demande</a>
-                        </div>
+                         
+						</div>           
+                        </a> 
                     </li>
                     <!-- Connect -->
                     <li class="nav-item dropdown" style="border: 2px solid #5aa0c5;">
