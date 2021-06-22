@@ -24,39 +24,56 @@
 	<div class="container spacer">
 		<form th:action="@{search}" method="get">
 			<div class="form-group">
-				<label> Mot Clé </label> <input type="text" name="motCle" />
-				<label> Prix min </label> <input type="text" name="prixMin"/>
-				<label> Prix max </label> <input type="text" name="prixMax" />
-				<label> Quartier </label>
+				<label>Mot Clé </label> <input type="text" name="motCle" />
+				<label>Prix min </label> <input type="text" name="prixMin"/>
+				<label>Prix max </label> <input type="text" name="prixMax" />
 				<select name="quartier">
-				<option th:each="q:${quartiers}" th:value="${q.id}" th:text="${q.nom}"></option>
-			</select> <br>
+					<option th:each="q:${quartiers}" th:value="${q.id}" th:text="${q.nom}"></option>
+				</select> <br>
 				<button type="submit">Chercher</button>
 			</div>
 		</form>
 	</div>
 	
 		<div class="card m-5" th:each="a:${annonces}">
-			<div class="row card-header">
-				<div class="col-md-10" th:text="${a.titre}"></div>
-				<div class="col-md-1"><button type="button" class="btn btn-warning" style="height:30px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Profil d'annonceur</a></button></div>
+			<div class="card-header">
+				<div style="font-size: 25px;"  class="col-md-10" th:text="${a.titre}"></div>
+				<!--<div class="col-md-1"><button type="button" class="btn btn-warning" style="height:30px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Profil d'annonceur</a></button></div>-->
 			</div>
 			
-			<div class="row card-body">
+			<div class="card-body">
+			<div class="row">
 				<!--IMAGE-->
-				<div class="col-md-5"><img style="border: 3px solid #555;;" th:src="@{getPhoto(id=${a.id})}" width="500" height="300"></div>
+				<div class="col-md-5"><img style="border: 3px solid #555; margin-bottom: 10px;" th:src="@{getPhoto(id=${a.id})}" width="400" height="300"></div>
 				<!--INPUTS-->
-				<div class="col-md-5 ml-3">
-					<div  th:text="${a.quartier.nom}"></div>
-					<div  th:text="${a.typeLogement.type}"></div><br><br>
+				<div class="col-md-4">
+				
+				
+				<div class="row" style="font-size: 20px;"> 
+					Ville  :<pre>      </pre><b><div style="font-style: oblique;" th:text="${a.quartier.ville.ville}"></div></b>
+				</div><br><br>
+				<div class="row" style="font-size: 20px;">
+					Quartier :<pre>      </pre><b><div style="font-style: oblique;" th:text="${a.quartier.nom}"></div></b>
+				</div><br><br>
+				<div class="row" style="font-size: 20px;">
+					Type de logement :<pre>      </pre><b><div style="font-style: oblique;" th:text="${a.typeLogement.type}"></div></b>
+				</div>	<br><br>
+				<div class="row" style="font-size: 20px;">
+					Prix :<pre>        </pre><b><div style="font-style: oblique;" th:text="${a.prix}"></div></b>
+				</div>
 					
 					
-					<div  th:text="${a.description}"></div>
+					
+					
+					<!-- div  th:text="${a.tel}"></div-->
+					
+					
+					<!-- div  th:text="${a.description}"></div-->
 					<!--boutton de suppression (on va utiliser thymeleaf secutiyy extra pour cacher selon role)-->	
 				</div>
 				<!--BOUTTONS-->
 				<div class="col-md-1">
-				<div  th:text="${a.prix}"></div>
+				
 				<button type="button" class="btn btn-info" style="height:40px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Plus d'infos</a></button><br>
 				<button type="button" class="btn btn-primary mt-2" style="height:100px;width:200px"><a th:href="@{etudiant/deposer(id=${a.id})}" style="color: white;">Déposer <br> mon dossier</a></button>
 								
@@ -64,8 +81,8 @@
 				</div>	
 			</div>
 			
-					
-			<div class="card-footer">
+				</div>	
+			<div class="card-footer ">
 						
 					
 					
@@ -77,13 +94,8 @@
 	</div>
 	<!--barre de pagination-->
 	<div class="container">
-				<div class="card m-5">
-				
-				<div class="card-body">
-	
-				
-	
-	
+		<div class="card m-5">
+			<div class="card-body">
 				<ul class="nav nav-pills">
 					<li th:each="page,status:${pages}"><!--status qui va nou permettre de recuperer indice de page-->
 					<!--au lieu de faire "patients?page=1 on fait ecriture ci dessous"-->
@@ -93,12 +105,13 @@
 						th:href="@{patients(page=${status.index})}" th:text="${status.index}"></a>
 						-->
 						
-						<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" class="btn" 
-						th:href="@{annonces(page=${status.index},size=${size})}" th:text="${status.index}"></a>
+						<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" class="btn" th:href="@{annonces(page=${status.index},size=${size})}" th:text="${status.index}"></a>
+						
 					</li>
 				</ul>
+			</div>
 		</div>
-	</div></div>
+	</div>
 	
 	
 		
@@ -110,6 +123,6 @@
 	
 
 	
-</div>
+	</div>
 </body>
 </html>
