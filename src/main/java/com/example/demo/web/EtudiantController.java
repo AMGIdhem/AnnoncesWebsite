@@ -34,7 +34,6 @@ import com.example.demo.service.UserService;
 @Secured(value={"ROLE_ETUDIANT"})
 public class EtudiantController 
 {
-	
 	@Autowired
 	UserService userService;
 	@Autowired

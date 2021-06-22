@@ -163,6 +163,16 @@ public class AnnonceurController {
 		return "editAnnonce";
 	}
 	
+	
+	@RequestMapping(value="/show")
+	public String show(Long id,Model model) {
+		Annonce an = annonceRepository.getOne(id);
+		model.addAttribute("annonce", an);
+		model.addAttribute("idOldAn",an.getId());
+		return "showAnnonce";
+	}
+	
+	
 	@RequestMapping(value="/editAnnonce", method=RequestMethod.POST)
 	public String editAnnonce(@Valid Annonce newAn,
 			@RequestParam(name="idOldAn")Long idOldAn,

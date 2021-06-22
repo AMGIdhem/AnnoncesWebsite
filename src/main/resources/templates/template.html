@@ -32,11 +32,9 @@
                     </li>
                    
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="font-size: 20px; color: white; border-left: 0.5px solid white;;border-right: 0.5px solid white;">Comment ça marche ?</a>
+                        <a class="nav-link" href="http://localhost:8080/#steps" style="font-size: 20px; color: white; border-left: 0.5px solid white;;border-right: 0.5px solid white;">Comment ça marche ?</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" style="font-size: 20px; color: white; border-right: 0.5px solid white;">...</a>
-                    </li>
+                    
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
@@ -72,7 +70,8 @@
 						  <a class="dropdown-item" th:href="@{http://localhost:8080/annonceur/profile}" sec:authorize="isAuthenticated()">Mon Profile</a>	
 						</div>
                         <div sec:authorize="hasRole('ROLE_ETUDIANT')">
-						  <a class="dropdown-item" th:href="@{getLogedUser}" sec:authorize="isAuthenticated()">Espace Utilisateur</a>
+						  <a class="dropdown-item" href="http://localhost:8080/etudiant/home" sec:authorize="isAuthenticated()">Espace Utilisateur</a>
+						  <a class="dropdown-item" href="http://localhost:8080/etudiant/profile" sec:authorize="isAuthenticated()">Mon Profile</a>	
 						  <!--a class="dropdown-item" th:href="@{profile}" sec:authorize="isAuthenticated()">Mon Profile</a-->	
 						</div>
 						<div sec:authorize="hasRole('ROLE_ADMIN')">
