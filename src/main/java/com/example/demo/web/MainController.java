@@ -143,10 +143,9 @@ public class MainController {
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public String search(Model model,
 			@RequestParam(name="motCle", required = false) String motCle,
-			@RequestParam(name="prixMin", required = false) Long prixMin,
-			@RequestParam(name="prixMax", required = false) Long prixMax) throws Exception {
-		
-		//model.addAttribute("annonces", annonceRepository.findAll(motCle, prixMin, prixMax) );
+			@RequestParam(name="prixMin", required = false) String prixMin,
+			@RequestParam(name="prixMax", required = false) String prixMax) throws Exception {
+		model.addAttribute("annonces", annonceRepository.findAll(motCle, Double.parseDouble(prixMin), Double.parseDouble(prixMax)) );
 		return "RESULT_TEST";
 		
 	}
