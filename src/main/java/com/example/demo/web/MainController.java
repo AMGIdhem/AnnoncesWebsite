@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.apache.commons.io.IOUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.demo.dao.AnnonceRepository;
+import com.example.demo.dao.QuartierRepository;
 import com.example.demo.dao.RoleRepository;
 import com.example.demo.dao.UserRepository;
 import com.example.demo.entities.Annonce;
+import com.example.demo.entities.Dossier;
 import com.example.demo.entities.User;
 
 @Controller
@@ -40,6 +43,8 @@ public class MainController {
 	AnnonceRepository annonceRepository;
 	@Autowired
 	RoleRepository roleRepository;
+	@Autowired
+	QuartierRepository quartierRepository;
 	
 	@Value("${dir.images}")
 	String imageDir;
@@ -80,6 +85,7 @@ public class MainController {
 		model.addAttribute("annonces", annonces.getContent() );
 		model.addAttribute("pages", new int[annonces.getTotalPages()]);
 		model.addAttribute("size", size);
+		model.addAttribute("quartiers", quartierRepository.findAll());
 		//pour savoir page demande et appliquer style css aux bouttons
 		model.addAttribute("currentPage", page);
 		
@@ -132,6 +138,17 @@ public class MainController {
 	@GetMapping("/test")
 	public String test() {
 		return "test";
+	}
+	
+	@RequestMapping(value="/search", method=RequestMethod.GET)
+	public String search(Model model,
+			@RequestParam(name="motCle", required = false) String motCle,
+			@RequestParam(name="prixMin", required = false) Long prixMin,
+			@RequestParam(name="prixMax", required = false) Long prixMax) throws Exception {
+		
+		//model.addAttribute("annonces", annonceRepository.findAll(motCle, prixMin, prixMax) );
+		return "RESULT_TEST";
+		
 	}
 	
 //	@RequestMapping(value="/user", method = RequestMethod.POST)

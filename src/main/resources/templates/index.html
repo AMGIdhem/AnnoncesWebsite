@@ -24,7 +24,12 @@
 	<div class="container spacer">
 		<form th:action="@{search}" method="get">
 			<div class="form-group">
-				<label>Mot Clé:</label> <input type="text" name="motCle" th:value="${motCle}"/>
+				<label>Mot Clé </label> <input type="text" name="motCle" />
+				<label>Prix min </label> <input type="text" name="prixMin"/>
+				<label>Prix max </label> <input type="text" name="prixMax" />
+				<select name="quartier">
+					<option th:each="q:${quartiers}" th:value="${q.id}" th:text="${q.nom}"></option>
+				</select> <br>
 				<button type="submit">Chercher</button>
 			</div>
 		</form>
