@@ -11,7 +11,7 @@
 	<div layout:fragment="pageContent" class="container">
 		<div class="card ">
 	  <div class="card-header text-center">
-	    Informations sur l'annonce
+	    <b>Informations sur l'annonce</b>
 	  </div>
 	  <div class="card-body">
 	  	
@@ -58,56 +58,59 @@
 		<!--/.Carousel Wrapper-->
 		<hr>
 	  		
+	  	<div class="row text-center">
+	  		<div style="font-size: 25px;"  class="col-md-10"><u>Titre de l'Annonce</u></div>
+	  		<div style="font-weight:bold; font-size: 25px;"  class="col-md-10" th:text="${annonce.titre}"></div>
+	  	</div>
 	  	
-	  	<div>
-	  		<div style="font-size: 25px;"  class="col-md-10" th:text="${annonce.titre}"></div>
+	  	<br>
 	  	
-	  		<div class="row">
-				
-				<!--INPUTS-->
-				<div class="col-md-4">
-				
-				
-				<div class="row" style="font-size: 20px;"> 
-					Ville  :<pre>      </pre><b><div style="font-style: oblique;" th:text="${annonce.quartier.ville.ville}"></div></b>
-				</div><br><br>
-				<div class="row" style="font-size: 20px;">
-					Quartier :<pre>      </pre><b><div style="font-style: oblique;" th:text="${annonce.quartier.nom}"></div></b>
-				</div><br><br>
-				<div class="row" style="font-size: 20px;">
-					Type de logement :<pre>      </pre><b><div style="font-style: oblique;" th:text="${annonce.typeLogement.type}"></div></b>
-				</div>	<br><br>
-				<div class="row" style="font-size: 20px;">
-					Prix :<pre>        </pre><b><div style="font-style: oblique;" th:text="${annonce.prix}"></div></b>
-				</div>
-				
-				<div class="row" style="font-size: 20px;">
-					nombrePersonnes :<pre>        </pre><b><div style="font-style: oblique;" th:text="${annonce.nombrePersonnes}"></div></b>
-				</div>
-				<div class="row" style="font-size: 20px;">
-					Description :<pre>        </pre><b><div style="font-style: oblique;" th:text="${annonce.description}"></div></b>
-				</div>
-				<div class="row" style="font-size: 20px;">
-					Meuble :<pre>        </pre><b><div style="font-style: oblique;" th:text="${annonce.meuble}"></div></b>
-				</div>
-				<div class="row" style="font-size: 20px;">
-					Etage :<pre>        </pre><b><div style="font-style: oblique;" th:text="${annonce.etage}"></div></b>
-				</div>
-				<div class="row" style="font-size: 20px;">
-					Surface :<pre>        </pre><b><div style="font-style: oblique;" th:text="${annonce.surface}"></div></b>
-				</div>
-					
-					
-					
-					<!-- div  th:text="${a.tel}"></div-->
-					
-					
-					<!-- div  th:text="${a.description}"></div-->
-					<!--boutton de suppression (on va utiliser thymeleaf secutiyy extra pour cacher selon role)-->	
-				</div>
-				
-				
-			</div>
+	  	<div class="row">
+	  		<table style="margin-left: auto; margin-right: auto;" class="table table-striped col-md-10">
+		  		<tr style="font-size:20px;">
+		  			<td  class="p-2">Ville  :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.quartier.ville.ville}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td width="38%" class="p-2">Quartier :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.quartier.nom}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Type de logement :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.quartier.nom}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Prix :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.prix}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Telephone :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.tel}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Adresse Email :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.email}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Nombre de Personnes :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.nombrePersonnes}"></div></b></td>
+		  		</tr>
+		  		
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Meuble :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.meuble}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Etage :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.etage}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Surface :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.surface}"></div></b></td>
+		  		</tr>
+		  		<tr style="font-size:20px;">
+		  			<td class="p-2">Description :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.description}"></div></b></td>
+		  		</tr>
+	  		</table>
+	  	
+	  	</div>
+	  		
+	  		
+	  		
+	  		
+	  		
+	  		
+	  		
 	  	</div>
 	  
 	  

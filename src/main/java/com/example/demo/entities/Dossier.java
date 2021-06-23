@@ -19,6 +19,20 @@ public class Dossier {
 	private String garantNom;
 	private String garantPrenom;
 	private String garantRelation;
+	private String garantTel;
+	private String garantEmail;
+	public String getGarantTel() {
+		return garantTel;
+	}
+	public void setGarantTel(String garantTel) {
+		this.garantTel = garantTel;
+	}
+	public String getGarantEmail() {
+		return garantEmail;
+	}
+	public void setGarantEmail(String garantEmail) {
+		this.garantEmail = garantEmail;
+	}
 	@ManyToOne
 	User user;
 	@ManyToOne

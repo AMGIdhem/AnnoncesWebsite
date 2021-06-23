@@ -65,11 +65,12 @@ showStepURLhash: false,
                 <div class="modal-body">
                     <div id="smartwizard">
                         <ul>
-                            <li><a href="#step-1">Step 1<br /><small>Account Info</small></a></li>
-                            <li><a href="#step-2">Step 2<br /><small>Personal Info</small></a></li>
-                            <li><a href="#step-3">Step 3<br /><small>Payment Info</small></a></li>
-                            <li><a href="#step-4">Step 4<br /><small>Confirm details</small></a></li>
-                            <li><a href="#step-5">Step 5<br /><small>Confirm details</small></a></li>
+                            <li><a href="#step-1">Etape 1<br /><small>Quartier</small></a></li>
+                            <li><a href="#step-2">Etape 2<br /><small>Contact</small></a></li>
+                            <li><a href="#step-3">Etape 3<br /><small>Emplacement</small></a></li>
+                            <li><a href="#step-4">Etape 4<br /><small>Images</small></a></li>
+                            <li><a href="#step-5">Etape 5<br /><small>Description</small></a></li>
+                            <li><a href="#step-6">Etape 6<br /><small>Merci</small></a></li>
                         </ul>
                         <div class="mt-4">
                             <div id="step-1">
@@ -95,20 +96,19 @@ showStepURLhash: false,
                                     <div class="col-md-6"> <label> Nombre de personnes </label> <input class="form-control" type="number" th:field="*{nombrePersonnes}" required/> </div>
                                 </div>
                                 <div class="row mt-3">
-                                    <div class="col-md-6"> <label> Prix </label> <input class="form-control" type="text" th:field="*{prix}" required/> </div>
-                                    <div class="col-md-6"> <label> Contact </label> <input class="form-control"type="text" th:field="*{tel}" required/> </div>
+                                    <!--div class="col-md-6"> <label> Prix </label> <input class="form-control" type="text" th:field="*{prix}" required/> </div-->
+                                    <div class="col-md-6"> <label> Adresse Email </label> <input class="form-control" type="text" th:field="*{adresse}" required/> </div>
+                                    <div class="col-md-6"> <label> Telephone </label> <input class="form-control"type="text" th:field="*{tel}" required/> </div>
                                 </div>
                             </div>
                             <div id="step-3">
                                 <div class="row">
                                     <div class="col-md-6"> <label> Etage </label> <input class="form-control" type="text" th:field="*{etage}" required/> </div>
-                                    <div class="col-md-6"> <label> Description </label> <textarea name="textarea" class="form-control" th:field="*{description}" required rows="5" cols="30" placeholder="Voici une indication."></textarea>  </div>
-                                    
+                                    <div class="col-md-6"> <label> Meublé </label> <input class="form-control" type="text" th:field="*{meuble}" required/> </div>
                                 </div>
                                 <div class="row mt-3">
-                                <div class="col-md-6"> <label> Surface (m²) </label> <input class="form-control" type="number" th:field="*{surface}" required/> </div>
-                                    <div class="col-md-6"> <label> Meublé </label> <input class="form-control" type="text" th:field="*{meuble}" required/> </div>
-                                    
+                                    <div class="col-md-6"> <label> Surface (m²) </label> <input class="form-control" type="number" th:field="*{surface}" required/> </div>
+                                    <div class="col-md-6"> <label> Prix </label> <input class="form-control" type="text" th:field="*{prix}" required/> </div>
                                 </div>
                             </div>
                             <div id="step-4" class="">
@@ -126,6 +126,14 @@ showStepURLhash: false,
                                 </div>
                             </div>
                             <div id="step-5" class="">
+                                <div class="row">
+                                	
+                                    <div class="col-md-12"> <label>Description :</label> <textarea class="form-control" name="textarea" th:field="*{description}" rows="5" cols="30" placeholder="Votre description." required></textarea> </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div id="step-6" class="">
                                 <div class="row">
                                     <div class="col-md-12"> <span>Merci d'avoir utiliser notre plateforme, Bonnce chance.</span> </div>
                                 </div>

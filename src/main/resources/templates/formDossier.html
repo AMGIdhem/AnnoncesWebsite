@@ -1,31 +1,130 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+
+	<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+	layout:decorator="template.html">
 <head>
 <meta charset="utf-8">
-<title>Déposer votre dossier</title>
+<title>STUDEX</title>
+<link rel="stylesheet" type="text/css"
+	href="../static/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
+	th:href="@{/css/myStyle.css}" />
+	   <style>body {
+    font-family: 'Lato', sans-serif
+}
+
+h1 {
+    margin-bottom: 40px
+}
+
+label {
+    color: #333
+}
+
+.btn-send {
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    width: 80%;
+    margin-left: 3px
+}
+
+.help-block.with-errors {
+    color: #ff5050;
+    margin-top: 5px
+}
+
+.card {
+    margin-left: 10px;
+    margin-right: 10px
+}</style>
+                     
 </head>
-<body>
+<body oncontextmenu='return false' class='snippet-body'>
+
+	<div layout:fragment="pageContent">
+	 <div class="container mb-4"> 
+	 <div class=" text-center mt-2 ">
+        <h1>Formulaire de Dossier</h1>
+    </div>
+    <div class="row ">
+        <div class="col-lg-7 mx-auto">
+            <div class="card mt-1 mx-auto p-4 bg-light">
+                <div class="card-body bg-light">
+                    <div class="container">
+                        <form th:action="@{saveDossier}" method="post" th:object="${dossier}" enctype="multipart/form-data" id="contact-form" role="form">
+                        
+                            <div class="controls">
+                            	<h2>Fiche de locataire</h2>
+                            	<hr>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group"> <label for="form_name">Date entree *</label> <input id="form_name" type="date" th:field="*{dateEntree}" name="name" class="form-control"  data-error="Firstname is required."> </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group"> <label for="form_lastname">Etablissement *</label> <input id="form_lastname" type="text" th:field="*{etablissement}" name="surname" class="form-control" placeholder="Le nom de votre etablissement *"  data-error="Lastname is required."> </div>
+                                    </div>
+                                </div>
+                                <br><br><h2>Fiche de garant</h2>
+                            	<hr>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Nom du Garant *</label> <input id="form_name" type="text" th:field="*{garantNom}" name="name" class="form-control" placeholder="Please enter your firstname *"  data-error="Firstname is required."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">Prenom du Garant *</label> <input id="form_lastname" type="text" th:field="*{garantPrenom}" name="surname" class="form-control" placeholder="Please enter your lastname *"  data-error="Lastname is required."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_name">Telephone du Garant *</label> <input id="form_name" th:field="*{garantTel}" type="number" name="name" class="form-control" placeholder="Please enter your firstname *"  data-error="Firstname is required."> </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group"> <label for="form_lastname">Email du Garant *</label> <input id="form_lastname" th:field="*{garantEmail}" type="email" name="surname" class="form-control" placeholder="Please enter your lastname *"  data-error="Lastname is required."> </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group"> <label for="form_name">Relation avec Garant *</label> 
+                                        <select class="form-control" name="garantRelation">
+											<option value="père" >père</option>
+											<option value="mère" >mère</option>
+											<option value="frère" >frère</option>
+											<option value="soeur" >soeur</option>
+											<option value="autre" >autre</option>
+										</select> </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                
+                                
+                                <div class="row">
+                                    <input name="idAnnonce" type="hidden" th:value="${idAnnonce}"/>
+                                    <div class="col-md-12"> <input type="submit" class="btn btn-success btn-send pt-2 btn-block " value="POSTULER"> </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> <!-- /.8 -->
+        </div> <!-- /.row-->
+    </div>
+</div>
+
+	
+	
+	
 
 
 	
-	<form th:action="@{saveDossier}" method="post" th:object="${dossier}">
-			<h2>Fiche locataire</h2>
-		<label> Date Entrée  </label> <input type="date" th:field="*{dateEntree}"/> <br>
-		<label> Etablissement </label> <input type="text" th:field="*{etablissement}"/> <br>
-			<h2> Garant </h2>
-		<label> Garant nom </label> <input type="text" th:field="*{garantNom}"/> <br>
-		<label> Garant Prenom </label> <input type="text" th:field="*{garantPrenom}"/> <br>
-		<label> Garant Relation </label> 
-		<select name="garantRelation">
-			<option value="père" >père</option>
-			<option value="mère" >mère</option>
-			<option value="frère" >frère</option>
-			<option value="soeur" >soeur</option>
-			<option value="autre" >autre</option>
-		</select> <br>
-		<input name="idAnnonce" type="hidden" th:value="${idAnnonce}"/>
-		<button type="submit">Enregistrer</button>
-	</form>
 
+	
+	</div>
 </body>
 </html>
+	
+	
