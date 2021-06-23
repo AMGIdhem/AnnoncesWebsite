@@ -181,12 +181,12 @@ public class AnnonceurController {
 		Annonce oldAn = annonceRepository.getOne(idOldAn);
 		oldAn.setAdresse(newAn.getAdresse());
 		oldAn.setTitre(newAn.getTitre());
-		oldAn.setPrix(newAn.getPrix());
+		oldAn.setPrix((int) newAn.getPrix());
 		oldAn.setDescription(newAn.getDescription());
 		oldAn.setTel(newAn.getTel());
 		oldAn.setEtage(newAn.getEtage());
 		oldAn.setMeuble(newAn.getMeuble());
-		oldAn.setSurface(newAn.getSurface());
+		oldAn.setSurface((int) newAn.getSurface());
 		oldAn.setNombrePersonnes(newAn.getNombrePersonnes());
 
 		annonceRepository.save(oldAn);

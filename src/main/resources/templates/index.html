@@ -35,6 +35,11 @@
 	
 	
 </script>
+<style>
+*{
+font-family:cursive
+}
+</style>
 </head>
 <body>
 
@@ -62,8 +67,8 @@
 		<div class="card m-5" th:each="a:${annonces}">
 			<div class="card-header">
 			<div class="row">
-			<div style="font-size: 25px;"  class="col-md-10" th:text="${a.titre}"></div>
-				<div style="font-style: oblique;font-size: 25px;" class="col"  th:text="${a.prix}"></div>
+			<div style="font-size: 25px; font-weight:bold"  class="col-md-10" th:text="${a.titre}"></div>
+				<div style="font-style: oblique;font-size: 25px;" class="col"></div>
 			</div>
 				
 				<!--<div class="col-md-1"><button type="button" class="btn btn-warning" style="height:30px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Profil d'annonceur</a></button></div>-->
@@ -80,23 +85,23 @@
 				<!--INPUTS-->
 				<div class="col-md-5">
 				
-				<table style="margin-left: auto; margin-right: auto;" class="table col-md-10">
-			  		<tr style="font-size:20px;">
-			  			<td width="55%" class="p-2">Ville  :</td> <td><b><div style="font-style: oblique;" th:text="${a.quartier.ville.ville}"></div></b></td>
+				<table>
+					<tr style="font-size:20px;">
+			  			<td><b><div style="font-style: oblique;" th:text="${a.prix + ' MAD / mois'}"></div></b></td>
 			  		</tr>
 			  		<tr style="font-size:20px;">
-			  			<td  class="p-2">Quartier :</td> <td><b><div style="font-style: oblique;" th:text="${a.quartier.nom}"></div></b></td>
+			  			<td><br><div style="font-style: oblique;" th:text="${a.quartier.ville.ville} + ', ' + ${a.quartier.nom}"></div></td>
 			  		</tr>
 			  		<tr style="font-size:20px;">
-			  			<td class="p-2">Type de logement :</td> <td><b><div style="font-style: oblique;" th:text="${a.typeLogement.type}"></div></b></td>
+			  			<td><br><div style="font-style: oblique;" th:text="${a.typeLogement.type} + ' - ' + ${a.surface} + ' m²'"></div></td>
 			  		</tr>
-			  		
 			  		<tr id="TelSection" style="font-size:20px;display:none;">
-			  			<td width="55%" class="p-2">Telephone :</td> <td><b><div style="font-style: oblique;" th:text="${a.tel}"></div></b></td>
+			  			<td width="55%" class="p-2">Telephone </td> <td><b><div style="font-style: oblique;" th:text="${a.tel}"></div></b></td>
 			  		</tr>
 			  		<tr id="AdresseSection" style="font-size:20px;display:none;">
-			  			<td width="55%" class="p-2">Adresse Email :</td> <td><b><div style="font-style: oblique;" th:text="${a.email}"></div></b></td>
+			  			<td width="55%" class="p-2">Adresse Email </td> <td><b><div style="font-style: oblique;" th:text="${a.email}"></div></b></td>
 			  		</tr>
+			  		
 
 			  		
 			  		
@@ -121,10 +126,10 @@
 				<!--BOUTTONS-->
 				<div class="col-md-1">
 				
-				<button type="button" class="btn btn-info" style="height:40px;width:150px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Plus d'infos</a></button><br>
-				<button type="button" class="btn btn-primary mt-2" style="height:100px;width:150px"><a th:href="@{etudiant/deposer(id=${a.id})}" style="color: white;">Déposer <br> mon dossier</a></button>
-				<button onclick="ShowAndHideTel()" type="button" class="btn btn-danger mt-2" style="height:40px;width:150px">Télephone</button>
-				<button onclick="ShowAndHideAdresse()" type="button" class="btn btn-success mt-2" style="height:50px;width:150px">Adresse</button>
+				<button type="button" class="btn btn-warning" style="height:40px;width:150px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Plus d'infos</a></button><br>
+				<button type="button" class="btn btn-info mt-2" style="height:100px;width:150px"><a th:href="@{etudiant/deposer(id=${a.id})}" style="color: white;">Déposer <br> mon dossier</a></button>
+				<button onclick="ShowAndHideTel()" type="button" class="btn btn-dark mt-2" style="height:40px;width:150px">Télephone</button>
+				<button onclick="ShowAndHideAdresse()" type="button" class="btn btn-dark mt-2" style="height:50px;width:150px">Adresse</button>
 								
 					
 				</div>	
@@ -157,7 +162,7 @@
 						th:href="@{patients(page=${status.index})}" th:text="${status.index}"></a>
 						-->
 						
-						<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" class="btn" th:href="@{annonces(page=${status.index},size=${size})}" th:text="${status.index}"></a>
+						<a  th:class="${status.index==currentPage?'btn btn-primary':'btn'}" class="btn" th:href="@{annonces(page=${status.index},size=${size})}" th:text="${status.index}+1"></a>
 						
 					</li>
 				</ul>

@@ -12,15 +12,16 @@ public class Annonce {
 	private Long id;
 	private String adresse;
 	private String titre;
-	private double prix;
+	private int prix;
 	private String tel;
+	private String email;
 	private String description;
 	private String photo;
 	private String photo1;
 	private String photo2;
 	private String etage;
 	private String meuble;
-	private float surface;
+	private int surface;
 	private int nombrePersonnes;
 	@ManyToOne
 	private User user;
@@ -32,8 +33,18 @@ public class Annonce {
 	public Annonce() {
 		
 	}
-	
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 
 	public String getEtage() {
 		return etage;
@@ -59,13 +70,13 @@ public class Annonce {
 
 
 
-	public float getSurface() {
+	public int getSurface() {
 		return surface;
 	}
 
 
 
-	public void setSurface(float surface) {
+	public void setSurface(int surface) {
 		this.surface = surface;
 	}
 
@@ -99,11 +110,11 @@ public class Annonce {
 		this.titre = titre;
 	}
 
-	public double getPrix() {
+	public int getPrix() {
 		return prix;
 	}
 
-	public void setPrix(double prix) {
+	public void setPrix(int prix) {
 		this.prix = prix;
 	}
 
