@@ -384,6 +384,9 @@ ul.summary-list > li:last-child  {
 .activity-desk .album a:last-child{
     margin-right: 0px;
 }
+*{
+font-family:cursive
+}
     </style>
 </head>
 
@@ -427,22 +430,22 @@ ul.summary-list > li:last-child  {
               Bienvenue cher utilisateur a l'interface reserve a la consultation de votre profile, ici vous pouvez voir toutes les informations liés à votre compte.
           </div>
           <div class="panel-body bio-graph-info">
-              <h1>Bio Graph</h1>
+              <h1>Profil Annonceur</h1>
               <div class="row">
                   <div class="bio-row">
-                      <p><span>Nom </span>: <span th:text="${user.email}"> </span></p>
+                      <p><span>Nom </span>: <span style="font-weight:bold" th:text="${user.email}"> </span></p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Prenom </span>: <span th:text="${user.email}"> </span></p>
+                      <p><span>Prenom </span>: <span style="font-weight:bold" th:text="${user.email}"> </span></p>
                   </div>
                   <div class="bio-row">
                       <p><span>Nationnalite </span>: <span  style = "text-transform:capitalize;" th:text="${user.nationalite}"> </span></p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Date Naissance</span>: <span th:text="${#dates.format(user.dateNaissance, 'dd-MMM-yyyy')}"> </span></p>
+                      <p><span>Date Naissance</span>: <span style="font-weight:bold" th:text="${#dates.format(user.dateNaissance, 'dd-MMM-yyyy')}"> </span></p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Emploi </span>: <span style = "text-transform:capitalize;" th:text="${user.emploi}"> </span></p>
+                      <p><span>Emploi </span>: <span style ="text-transform:capitalize;" th:text="${user.emploi}"> </span></p>
                   </div>
                   <div class="bio-row">
                       <p><span>Email </span>: <span th:text="${user.email}"> </span></p>
@@ -451,7 +454,7 @@ ul.summary-list > li:last-child  {
                       <p><span>Telephone </span>: <span th:text="${user.email}"> </span></p>
                   </div>
                   <div class="bio-row">
-                      <p><span>Mot de passe </span>: <span th:text="${user.password}"> </span></p>
+                      <p><span>Mot de passe </span>: <span th:text="${user.password}"* </span></p>
                   </div>
               </div>
           </div>
