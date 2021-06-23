@@ -14,8 +14,6 @@ public class Annonce {
 	private String titre;
 	private double prix;
 	private String tel;
-	private String email;
-	
 	private String description;
 	private String photo;
 	private String photo1;
@@ -35,16 +33,7 @@ public class Annonce {
 		
 	}
 	
-	public String getEmail() {
-		return email;
-	}
-
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
+	
 
 	public String getEtage() {
 		return etage;
