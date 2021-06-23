@@ -45,11 +45,25 @@
 		  </div>
 		  <!--/.Slides-->
 		  <!--Controls-->
-		  <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+		  <a class="carousel-control-prev" style="height: 50px;
+		  margin-top: 175px;
+    width: 50px;
+    outline: yellow;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    border: 5px solid black;" href="#carousel-example-1z" role="button" data-slide="prev">
 		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 		    <span class="sr-only">Previous</span>
 		  </a>
-		  <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+		  <a class="carousel-control-next" style="height: 50px;
+		  margin-top: 175px;
+    width: 50px;
+    outline: black;
+    background-color: rgba(0, 0, 0, 0.3);
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    border: 5px solid black;" href="#carousel-example-1z" role="button" data-slide="next">
 		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		    <span class="sr-only">Next</span>
 		  </a>
@@ -74,7 +88,7 @@
 		  			<td width="38%" class="p-2">Quartier :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.quartier.nom}"></div></b></td>
 		  		</tr>
 		  		<tr style="font-size:20px;">
-		  			<td class="p-2">Type de logement :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.quartier.nom}"></div></b></td>
+		  			<td class="p-2">Type de logement :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.typeLogement.type}"></div></b></td>
 		  		</tr>
 		  		<tr style="font-size:20px;">
 		  			<td class="p-2">Prix :</td> <td><b><div style="font-style: oblique;" th:text="${annonce.prix}"></div></b></td>

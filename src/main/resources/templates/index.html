@@ -11,10 +11,26 @@
 	th:href="@{/css/bootstrap.min.css}" />
 <link rel="stylesheet" type="text/css" href="../static/css/myStyle.css"
 	th:href="@{/css/myStyle.css}" />
+<script>
+	function ShowAndHide() {
+	    var tel = document.getElementById('TelSection');
+	    if (tel.style.display == 'none') {
+	        tel.style.display = 'block';
+	    } else {
+	        tel.style.display = 'none';
+	    }
+	    var adresse = document.getElementById('AdresseSection');
+	    if (adresse.style.display == 'none') {
+	        adresse.style.display = 'block';
+	    } else {
+	        adresse.style.display = 'none';
+	    }
+	}
+</script>
 </head>
 <body>
 
-<div layout:fragment="pageContent">
+<div layout:fragment="pageContent" class="container spacer">
 
 
 	<a th:href="@{login}"> Etudiant </a>
@@ -61,6 +77,14 @@
 				<div class="row" style="font-size: 20px;">
 					Prix :<pre>        </pre><b><div style="font-style: oblique;" th:text="${a.prix}"></div></b>
 				</div>
+				<div id="TelSection"  class="row" style="font-size: 20px;display:none;">
+					Prix Visible :<pre>        </pre><b><div style="font-style: oblique;" th:text="${a.prix}"></div></b>
+				</div>
+				<div id="AdresseSection"  class="row" style="font-size: 20px;display:none;">
+					Prix Visible :<pre>        </pre><b><div style="font-style: oblique;" th:text="${a.prix}"></div></b>
+				</div>
+				
+				
 					
 					
 					
@@ -76,6 +100,7 @@
 				
 				<button type="button" class="btn btn-info" style="height:40px;width:200px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Plus d'infos</a></button><br>
 				<button type="button" class="btn btn-primary mt-2" style="height:100px;width:200px"><a th:href="@{etudiant/deposer(id=${a.id})}" style="color: white;">Déposer <br> mon dossier</a></button>
+				<button onclick="ShowAndHide()" type="button" class="btn btn-primary mt-2" style="height:40px;width:200px">Télephone</button>
 								
 					
 				</div>	
@@ -91,7 +116,10 @@
 			
 		
 		</div>
+		
+		
 	</div>
+	
 	<!--barre de pagination-->
 	<div class="container">
 		<div class="card m-5">
@@ -124,5 +152,7 @@
 
 	
 	</div>
+	
+	
 </body>
 </html>
