@@ -75,7 +75,7 @@
 						  <!--a class="dropdown-item" th:href="@{profile}" sec:authorize="isAuthenticated()">Mon Profile</a-->	
 						</div>
 						<div sec:authorize="hasRole('ROLE_ADMIN')">
-						  <a class="dropdown-item" th:href="@{getLogedUser}" sec:authorize="isAuthenticated()">Espace Utilisateur</a>
+						  <a class="dropdown-item" href="http://localhost:8080/admin/home" sec:authorize="isAuthenticated()">Espace Administrateur</a>
 						  <!--a class="dropdown-item" th:href="@{profile}" sec:authorize="isAuthenticated()">Mon Profile</a-->
 						</div>
                         
