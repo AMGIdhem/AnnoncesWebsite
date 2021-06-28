@@ -147,6 +147,20 @@
     padding:0 15px;
 }
 
+.bio-roww {
+    width: 100%;
+    float: left;
+    margin-bottom: 10px;
+    padding:0 15px;
+}
+
+.bio-rowww {
+    width: 63%;
+    float: left;
+    margin-bottom: 10px;
+    padding:0 15px;
+}
+
 .bio-row p span {
     width: 100px;
     display: inline-block;
@@ -416,9 +430,10 @@ font-family:cursive
           </div>
 
           <ul class="nav nav-pills nav-stacked">
-              <li class="active" style="width: 210px;"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
+              <li class="active" style="width: 210px;"><a href="#"> <i class="fa fa-user"></i> Profil</a></li>
               <li style="width: 210px;"><a href="http://localhost:8080/annonceur/profilem#"> <i class="fa fa-edit"></i> Modifier mon profile</a></li>
               <li style="width: 210px;"><a href="http://localhost:8080/annonceur/mesAnnonces"> <i class="fa fa-calendar"></i> Mes annonces </a></li>
+              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/mesAnnonces"> <i class="fa fa-calendar"></i> Supprimer mon profile </a></li>
               
           </ul>
       </div>
@@ -427,34 +442,43 @@ font-family:cursive
       
       <div class="panel">
           <div class="bio-graph-heading">
-              Bienvenue cher utilisateur a l'interface reserve a la consultation de votre profile, ici vous pouvez voir toutes les informations liés à votre compte.
+              Bienvenue cher annonceur a l'interface reserve a la consultation de votre profile, ici vous pouvez voir toutes les informations liés à votre compte.
           </div>
           <div class="panel-body bio-graph-info">
               <h1>Profil Annonceur</h1>
+              <hr>
               <div class="row">
+              	  <div class="bio-row">
+                      <p><span>Username </span>: <span style="font-weight:bold" th:text="${user.username}"> </span></p>
+                  <hr></div>
                   <div class="bio-row">
-                      <p><span>Nom </span>: <span style="font-weight:bold" th:text="${user.email}"> </span></p>
-                  </div>
+                      <p><span>Email </span>: <span style="font-weight:bold" th:text="${user.email}"> </span></p>
+                  <hr></div>
                   <div class="bio-row">
-                      <p><span>Prenom </span>: <span style="font-weight:bold" th:text="${user.email}"> </span></p>
-                  </div>
+                      <p><span>Nom </span>: <span style="font-weight:bold" th:text="${user.nom}"> </span></p>
+                  <hr></div>
                   <div class="bio-row">
-                      <p><span>Nationnalite </span>: <span  style = "text-transform:capitalize;" th:text="${user.nationalite}"> </span></p>
-                  </div>
+                      <p><span>Prenom </span>: <span style="font-weight:bold" th:text="${user.prenom}"> </span></p>
+                  <hr></div>
+                  <div class="bio-row">
+                      <p><span>Nationnalite </span>: <span  style = "font-weight:bold;text-transform:capitalize;" th:text="${user.nationalite}"> </span></p>
+                  <hr></div>
+                  
+                  <div class="bio-row">
+                      <p><span>Emploi </span>: <span style ="font-weight:bold;text-transform:capitalize;" th:text="${user.emploi}"> </span></p>
+                  <hr></div>
+                  
+                  <div class="bio-row">
+                      <p><span>Téléphone </span>: <span style="font-weight:bold" th:text="${user.tel}"> </span></p>
+                  <hr></div>
                   <div class="bio-row">
                       <p><span>Date Naissance</span>: <span style="font-weight:bold" th:text="${#dates.format(user.dateNaissance, 'dd-MMM-yyyy')}"> </span></p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Emploi </span>: <span style ="text-transform:capitalize;" th:text="${user.emploi}"> </span></p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Email </span>: <span th:text="${user.email}"> </span></p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Telephone </span>: <span th:text="${user.email}"> </span></p>
-                  </div>
-                  <div class="bio-row">
-                      <p><span>Mot de passe </span>: <span th:text="${user.password}"></span></p>
+                  <hr></div>
+                  
+                  
+                  
+                  <div class="bio-roww">
+                      <p><span>Adresse   </span>   : <span style="font-weight:bold" th:text="${user.adresse}"> </span></p>
                   </div>
               </div>
           </div>

@@ -23,8 +23,12 @@ import net.bytebuddy.implementation.bind.annotation.Empty;
 public class User {
 	@Id
 	@NotEmpty
-	@Size(min=5,max=15)
+	@Size(min=5,max=30)
 	private String username;
+	@NotEmpty
+	private String nom;
+	@NotEmpty
+	private String prenom;
 	@NotEmpty
 	private String password;
 	private String matchingPassword;
@@ -45,6 +49,18 @@ public class User {
 	private String etablissement;
 	private String niveau;
 	
+	public String getNom() {
+		return nom;
+	}
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
 	public String getEmploi() {
 		return emploi;
 	}
