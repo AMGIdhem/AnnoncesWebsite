@@ -13,6 +13,6 @@ import com.example.demo.entities.Annonce;
 public interface AnnonceRepository extends JpaRepository<Annonce, Long> {
 	public List<Annonce> findByUser_username(String username);
 	@Query("SELECT a FROM Annonce a WHERE a.titre LIKE %?1% AND a.prix>?2 AND a.prix<?3 ")
-	public List<Annonce> findAll(String motCle, Double prixMin, Double prixMax);
+	public List<Annonce> findAll(String motCle, int prixMin, int prixMax);
 	
 }

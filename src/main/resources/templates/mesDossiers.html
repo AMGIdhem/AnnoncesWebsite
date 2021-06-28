@@ -4,7 +4,7 @@
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
 	layout:decorator="template.html">
 <head>
-	<meta charset="ISO-8859-1">
+	<meta charset="utf-8">
 	<title>Insert title here</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -15,6 +15,9 @@
 	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 	<style>
+	*{
+		font-family:cursive
+	}
 body {
 	color: #566787;
 	background: #f5f5f5;
@@ -274,7 +277,7 @@ $(document).ready(function(){
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2>Gerer <b>Ses dossiers</b></h2>
+						<h2>Gérer <b>mes dossiers</b></h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="http://localhost:8080/annonces" class="btn btn-success" >Consulter les annonces</a>
@@ -291,6 +294,7 @@ $(document).ready(function(){
 								<label for="selectAll"></label>
 							</span>
 						</th>
+						<th>N° dossier :</th>
 						<th>Titre de l'annonce</th>
 						<th>Etablissement</th>
 						<th>Date Entree</th>
@@ -314,6 +318,7 @@ $(document).ready(function(){
 								<label for="checkbox1"></label>
 							</span>
 						</td>
+						<td th:text="${d.id}"></td>
 						<td th:text="${d.annonce.titre}"></td>
 						<td th:text="${d.etablissement}"></td>
 						<td th:text="${d.dateEntree}"></td>
@@ -448,7 +453,7 @@ $(document).ready(function(){
 				<tr>
 					<th>Titre de l'annonce</th>
 					<th>Etablissement</th>
-					<th>Date Entr�e</th>
+					<th>Date Entrée</th>
 					<th>Garant Relation</th>
 					<th>Nom du Garant</th>
 					<th>Prenom du Garant</th>

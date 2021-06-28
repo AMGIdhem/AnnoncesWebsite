@@ -145,8 +145,8 @@ public class MainController {
 			@RequestParam(name="motCle", required = false) String motCle,
 			@RequestParam(name="prixMin", required = false) String prixMin,
 			@RequestParam(name="prixMax", required = false) String prixMax) throws Exception {
-		model.addAttribute("annonces", annonceRepository.findAll(motCle, Double.parseDouble(prixMin), Double.parseDouble(prixMax)) );
-		return "RESULT_TEST";
+		model.addAttribute("annonces", annonceRepository.findAll(motCle, Integer.parseInt(prixMin), Integer.parseInt(prixMax)) );
+		return "index";
 		
 	}
 	
