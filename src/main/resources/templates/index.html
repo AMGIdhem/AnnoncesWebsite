@@ -93,13 +93,13 @@ font-family:cursive
 			  			<td><br><div style="font-style: oblique;" th:text="${a.quartier.ville.ville} + ', ' + ${a.quartier.nom}"></div></td>
 			  		</tr>
 			  		<tr style="font-size:20px;">
-			  			<td><br><div style="font-style: oblique;" th:text="${a.typeLogement.type} + ' - ' + ${a.surface} + ' m²'"></div></td>
+			  			<td><br><div style="font-style: oblique;" th:text="${a.typeLogement.type} + ' - ' + ${a.surface} + ' m²'"></div><br></td>
 			  		</tr>
 			  		<tr id="TelSection" style="font-size:20px;display:none;">
-			  			<td width="55%" class="p-2">Telephone </td> <td><b><div style="font-style: oblique;" th:text="${a.tel}"></div></b></td>
-			  		</tr>
+			  			<td width="55%" class="p-2">Téléphone-</td> <td><b><div style="font-style: oblique;" th:text="${a.tel}"></div></b></td>
+			  		</tr><br>
 			  		<tr id="AdresseSection" style="font-size:20px;display:none;">
-			  			<td width="55%" class="p-2">Adresse Email </td> <td><b><div style="font-style: oblique;" th:text="${a.email}"></div></b></td>
+			  			<td width="55%" class="p-2">Email-</td> <td><b><div style="font-style: oblique;" th:text="${a.email}"></div></b></td>
 			  		</tr>
 			  		
 
@@ -129,7 +129,7 @@ font-family:cursive
 				<button type="button" class="btn btn-warning" style="height:40px;width:150px"><a th:href="@{getAnnonce(id=${a.id})}" style="color: white;">Plus d'infos</a></button><br>
 				<button type="button" class="btn btn-info mt-2" style="height:100px;width:150px"><a th:href="@{etudiant/deposer(id=${a.id})}" style="color: white;">Déposer <br> mon dossier</a></button>
 				<button onclick="ShowAndHideTel()" type="button" class="btn mt-2" style="background-color:white;color:black;border: 2px solid green;height:40px;width:150px">Télephone</button>
-				<button onclick="ShowAndHideAdresse()" type="button" class="btn btn-success mt-2" style="background-color:white;color:black;border: 2px solid green;height:50px;width:150px">Adresse</button>
+				<button onclick="ShowAndHideAdresse()" type="button" class="btn btn-success mt-2" style="background-color:white;color:black;border: 2px solid green;height:50px;width:150px">Email</button>
 								
 					
 				</div>	
