@@ -115,7 +115,7 @@ font-family:cursive
                     <div class="col-md-3 register-left">
                         <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
                         <h3>Bienvenue</h3>
-                        <p>Bienvenur à la premiére plateforme pour logement etudiant!</p>
+                        <p>à la premiére plateforme pour logement etudiant au Maroc !</p>
                         <a th:href="@{login}"><input type="button" name="" value="Se connecter"/></a><br/>
                     </div>
                     <div class="col-md-9 register-right">
@@ -138,6 +138,16 @@ font-family:cursive
                                         <div class="form-group">
                                             <!--<input type="text" class="form-control" placeholder="First Name *" value="" />-->
                                             <input type="text" class="form-control" placeholder="Username *" th:field="*{username}" required/>
+											<span th:errors="*{username}"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <!--<input type="text" class="form-control" placeholder="First Name *" value="" />-->
+                                            <input type="text" class="form-control" placeholder="Nom *" th:field="*{username}" required/>
+											<span th:errors="*{username}"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <!--<input type="text" class="form-control" placeholder="First Name *" value="" />-->
+                                            <input type="text" class="form-control" placeholder="Prénom *" th:field="*{username}" required/>
 											<span th:errors="*{username}"></span>
                                         </div>
                                         <div class="form-group">
@@ -171,7 +181,7 @@ font-family:cursive
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Your Phone *" th:field="*{tel}" />
+                                            <input type="text" minlength="10" maxlength="10" name="txtEmpPhone" class="form-control" placeholder="Votre Telephone *" th:field="*{tel}" />
                                         	<span th:errors="*{tel}"></span>
                                         </div>
                                         <div class="form-group">

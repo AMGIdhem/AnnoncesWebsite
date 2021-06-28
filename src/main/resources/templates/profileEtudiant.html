@@ -2,10 +2,18 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-	layout:decorator="templatefree.html">
+	layout:decorator="template.html">
 <head>
 <meta charset="utf-8">
 <title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 <style type="text/css">
 	*{
@@ -417,8 +425,8 @@ ul.summary-list > li:last-child  {
 
           <ul class="nav nav-pills nav-stacked">
               <li class="active" style="width: 210px;"><a href="#"> <i class="fa fa-user"></i> Profile</a></li>
-              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/profilem#"> <i class="fa fa-edit"></i> Modifier mon profile</a></li>
-              <li style="width: 210px;"><a href="#"> <i class="fa fa-calendar"></i> Mes annonces </a></li>
+              <li style="width: 210px;"><a href="http://localhost:8080/etudiant/profilem#"> <i class="fa fa-edit"></i> Modifier mon profile</a></li>
+              <li style="width: 210px;"><a href="http://localhost:8080/etudiant/mesDossiers"> <i class="fa fa-calendar"></i> Mes dossiers</a></li>
               
           </ul>
       </div>
@@ -427,10 +435,10 @@ ul.summary-list > li:last-child  {
       
       <div class="panel">
           <div class="bio-graph-heading">
-              Bienvenue cher utilisateur a l'interface reserve a la consultation de votre profile, ici vous pouvez voir toutes les informations liés à votre compte.
+              Bienvenue cher étudiant à l'interface réservé à la consultation de votre profile, ici vous pouvez voir toutes les informations liés à votre compte.
           </div>
           <div class="panel-body bio-graph-info">
-              <h1>Bio Graph</h1>
+              <h1>Profil Annonceur</h1>
               <div class="row">
                   <div class="bio-row">
                       <p><span>Nom </span>: <span th:text="${user.email}"> </span></p>
