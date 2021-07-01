@@ -3,6 +3,12 @@ package com.example.demo.web;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.nio.file.CopyOption;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import static java.nio.file.StandardCopyOption.*;
+
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -112,6 +118,10 @@ public class AnnonceurController {
 		String username=securityContext.getAuthentication().getName();
 		User user = userRepository.findById(username).get();
 		an.setUser(user);
+		
+		List<Annonce> annonces = new LinkedList<>();
+		annonces.add(an);
+		user.setAnnonces(annonces);
 		annonceRepository.save(an);
 		if(!(file.isEmpty())) {
 			an.setPhoto(file.getOriginalFilename());
@@ -127,6 +137,56 @@ public class AnnonceurController {
 		}
 
 		return "redirect:home";
+		
+	}
+	
+	@RequestMapping(value="/editAnnonce", method=RequestMethod.POST)
+	public String editAnnonce(@Valid Annonce newAn,
+			@RequestParam(name="idOldAn")Long idOldAn,
+			HttpServletRequest httpServletRequest) throws Exception {
+
+		Annonce oldAn = annonceRepository.getOne(idOldAn);
+//		File oldFile = new File(imageDir+oldAn.getId());
+//		oldFile.delete();
+//		File oldFile1 = new File(imageDir+oldAn.getId()+"_1");
+//		oldFile1.delete();
+//		File oldFile2 = new File(imageDir+oldAn.getId()+"_2");
+//		oldFile2.delete();
+//		Files.delete(Paths.get(imageDir+oldAn.getId()));
+//		Files.delete(Paths.get(imageDir+oldAn.getId()+"_1"));
+//		Files.move(Paths.get(imageDir+oldAn.getId()+"_2"), Paths.get("C:\\Users\\Moi\\Desktop\\1.txt"), REPLACE_EXISTING);
+//		Files.delete(Paths.get(imageDir+oldAn.getId()+"_2"));
+//		if(!(file.isEmpty())) { oldAn.setPhoto(file.getOriginalFilename());}
+//		if(!(file1.isEmpty())) { oldAn.setPhoto1(file1.getOriginalFilename());}
+//		if(!(file2.isEmpty())) { oldAn.setPhoto2(file2.getOriginalFilename());}
+		oldAn.setAdresse(newAn.getAdresse());
+		oldAn.setTitre(newAn.getTitre());
+		oldAn.setPrix((int) newAn.getPrix());
+		oldAn.setDescription(newAn.getDescription());
+		oldAn.setTel(newAn.getTel());
+		oldAn.setEtage(newAn.getEtage());
+		oldAn.setMeuble(newAn.getMeuble());
+		//oldAn.setSurface((int) newAn.getSurface());
+		oldAn.setNombrePersonnes(newAn.getNombrePersonnes());
+		
+		
+		
+//		if(!(file.isEmpty())) {
+//			oldAn.setPhoto(file.getOriginalFilename());
+//			file.transferTo(new File(imageDir+oldAn.getId()));
+//		}
+//		if(!(file1.isEmpty())) {
+//			oldAn.setPhoto(file1.getOriginalFilename());
+//			file1.transferTo(new File(imageDir+oldAn.getId()+"_1"));
+//		}
+//		if(!(file2.isEmpty())) {
+//			oldAn.setPhoto(file2.getOriginalFilename());
+//			file2.transferTo(new File(imageDir+oldAn.getId()+"_2"));
+//		}
+
+		annonceRepository.save(oldAn);
+
+		return "redirect:mesAnnonces";
 		
 	}
 	
@@ -172,28 +232,6 @@ public class AnnonceurController {
 		return "showAnnonce";
 	}
 	
-	
-	@RequestMapping(value="/editAnnonce", method=RequestMethod.POST)
-	public String editAnnonce(@Valid Annonce newAn,
-			@RequestParam(name="idOldAn")Long idOldAn,
-			HttpServletRequest httpServletRequest) throws Exception {
-		
-		Annonce oldAn = annonceRepository.getOne(idOldAn);
-		oldAn.setAdresse(newAn.getAdresse());
-		oldAn.setTitre(newAn.getTitre());
-		oldAn.setPrix((int) newAn.getPrix());
-		oldAn.setDescription(newAn.getDescription());
-		oldAn.setTel(newAn.getTel());
-		oldAn.setEtage(newAn.getEtage());
-		oldAn.setMeuble(newAn.getMeuble());
-		oldAn.setSurface((int) newAn.getSurface());
-		oldAn.setNombrePersonnes(newAn.getNombrePersonnes());
-
-		annonceRepository.save(oldAn);
-
-		return "redirect:mesAnnonces";
-		
-	}
 	
 	@RequestMapping(value="/profile")
 	public String monProfileAnnonceur(Model model, HttpServletRequest httpServletRequest) {

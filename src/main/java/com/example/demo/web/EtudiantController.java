@@ -1,6 +1,7 @@
 package com.example.demo.web;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,8 +86,28 @@ public class EtudiantController
 		//couplage entre les entites
 		d.setUser(user);
 		d.setAnnonce(annonce);
+		List<Dossier> dossiers = new LinkedList<>();
+		dossiers.add(d);
+		annonce.setDossiers(dossiers);
 		dossierRepository.save(d);
 		return "redirect:home";
+		
+	}
+	
+	@RequestMapping(value="/editDossier", method=RequestMethod.POST)
+	public String editDossier( Dossier newD,
+			@RequestParam(name="idOldD")Long idOldD,
+			HttpServletRequest httpServletRequest) throws Exception {
+		
+		Dossier oldD = dossierRepository.getOne(idOldD);
+		oldD.setEtablissement(newD.getEtablissement());
+		oldD.setGarantNom(newD.getGarantNom());
+		oldD.setGarantPrenom(newD.getGarantPrenom());
+		oldD.setGarantTel(newD.getGarantTel());
+		oldD.setGarantEmail(newD.getGarantEmail());
+		dossierRepository.save(oldD);
+		//oldAn.setSurface((int) newAn.getSurface());
+		return "redirect:mesDossiers";
 		
 	}
 	
@@ -101,8 +122,9 @@ public class EtudiantController
 		return "mesDossiers";
 	}
 	
-	@RequestMapping(value="/supprimer")
-	public String supprimer(Long id) {
+	@RequestMapping(value="/supprimerDossier")
+	public String supprimerDossier(Long id) {
+		System.out.println("ID DU DOSSIER EST :" + id);
 		dossierRepository.deleteById(id);
 		return "redirect:mesDossiers";
 	}
@@ -111,6 +133,7 @@ public class EtudiantController
 	public String edit(Long id,Model model) {
 		Dossier dossier = dossierRepository.getOne(id);
 		model.addAttribute("dossier", dossier);
+		model.addAttribute("idOldD",dossier.getId());
 		return "editDossier";
 	}
 	

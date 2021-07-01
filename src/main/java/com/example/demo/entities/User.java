@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -25,9 +26,9 @@ public class User {
 	@NotEmpty
 	@Size(min=5,max=30)
 	private String username;
-	@NotEmpty
+	//@NotEmpty
 	private String nom;
-	@NotEmpty
+	//@NotEmpty
 	private String prenom;
 	@NotEmpty
 	private String password;
@@ -48,7 +49,15 @@ public class User {
 	private String cne;
 	private String etablissement;
 	private String niveau;
+	@OneToMany(mappedBy="user", cascade = CascadeType.REMOVE)
+	private Collection<Annonce> annonces;
 	
+	public Collection<Annonce> getAnnonces() {
+		return annonces;
+	}
+	public void setAnnonces(Collection<Annonce> annonces) {
+		this.annonces = annonces;
+	}
 	public String getNom() {
 		return nom;
 	}

@@ -1,9 +1,17 @@
 package com.example.demo.entities;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 public class Annonce {
@@ -25,14 +33,26 @@ public class Annonce {
 	private int nombrePersonnes;
 	@ManyToOne
 	private User user;
-	@ManyToOne 
+	@ManyToOne
 	TypeLogement typeLogement;
 	@ManyToOne
 	Quartier quartier;
+	@OneToMany(mappedBy = "annonce", cascade = CascadeType.REMOVE)
+	
+	private Collection<Dossier> dossiers;
 	
 	public Annonce() {
 		
 	}
+	
+	public Collection<Dossier> getDossiers() {
+		return dossiers;
+	}
+
+	public void setDossiers(Collection<Dossier> dossiers) {
+		this.dossiers = dossiers;
+	}
+
 
 	public String getEmail() {
 		return email;

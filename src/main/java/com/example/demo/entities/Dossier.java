@@ -21,6 +21,10 @@ public class Dossier {
 	private String garantRelation;
 	private String garantTel;
 	private String garantEmail;
+	@ManyToOne
+	User user;
+	@ManyToOne
+	Annonce annonce;
 	public String getGarantTel() {
 		return garantTel;
 	}
@@ -33,10 +37,7 @@ public class Dossier {
 	public void setGarantEmail(String garantEmail) {
 		this.garantEmail = garantEmail;
 	}
-	@ManyToOne
-	User user;
-	@ManyToOne
-	Annonce annonce;
+
 	public long getId() {
 		return id;
 	}
