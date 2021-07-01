@@ -25,7 +25,7 @@
 }
 
 .profile-nav .user-heading {
-    background: rgb(0, 128, 192);
+    background: rgb(0, 0, 160);
     color: #fff;
     border-radius: 4px 4px 0 0;
     -webkit-border-radius: 4px 4px 0 0;
@@ -80,7 +80,7 @@
 
 .profile-nav ul > li > a:hover, .profile-nav ul > li > a:focus, .profile-nav ul li.active  a {
     background: #f8f7f5 !important;
-    border-left: 5px solid rgb(0, 128, 192);
+    border-left: 5px solid rgb(0, 0, 160);
     color: #89817f !important;
 }
 
@@ -119,7 +119,7 @@
 }
 
 .bio-graph-heading {
-    background: rgb(0, 128, 192);
+    background: rgb(0, 0, 160);
     color: #fff;
     text-align: center;
     font-style: italic;
@@ -142,20 +142,6 @@
 
 .bio-row {
     width: 50%;
-    float: left;
-    margin-bottom: 10px;
-    padding:0 15px;
-}
-
-.bio-roww {
-    width: 100%;
-    float: left;
-    margin-bottom: 10px;
-    padding:0 15px;
-}
-
-.bio-rowww {
-    width: 63%;
     float: left;
     margin-bottom: 10px;
     padding:0 15px;
@@ -398,9 +384,6 @@ ul.summary-list > li:last-child  {
 .activity-desk .album a:last-child{
     margin-right: 0px;
 }
-*{
-font-family:cursive
-}
     </style>
 </head>
 
@@ -430,59 +413,76 @@ font-family:cursive
           </div>
 
           <ul class="nav nav-pills nav-stacked">
-              <li class="active" style="width: 210px;"><a href="#"> <i class="fa fa-user"></i> Profil</a></li>
-              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/profilem#"> <i class="fa fa-edit"></i> Modifier mon compte</a></li>
-              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/mesAnnonces"> <i class="fa fa-calendar"></i> Mes annonces </a></li>
-              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/mesAnnonces"> <i class="fa fa-power-off"></i>Supprimer mon compte </a></li>   
+              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/profile"> <i class="fa fa-user"></i> Profil</a></li>
+              <li class="active" style="width: 210px;"><a href="#"> <i class="fa fa-edit"></i> Modifier mon compte</a></li>
+              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/mesAnnonces"> <i class="fa fa-calendar"></i> Mes Annonces </a></li>
+              <li style="width: 210px;"><a href="http://localhost:8080/annonceur/mesAnnonces"> <i class="fa fa-power-off"></i> Supprimer mon compte </a></li>
+              
           </ul>
       </div>
   </div>
+  
+  
+  <!--FORMULAIRE-->
   <div class="profile-info col-md-9">
+ 
       
       <div class="panel">
           <div class="bio-graph-heading">
-              Bienvenue cher annonceur a l'interface reserve a la consultation de votre profile, ici vous pouvez voir toutes les informations liés à votre compte.
+              bienvenue cher annonceur à l'interface réservé à la modification du profile, ici vous pouvez modifier les différentes informations liés a votre compte.
           </div>
           <div class="panel-body bio-graph-info">
-              <h1>Profil Annonceur</h1>
-              <hr>
+              <h1>Modification du profile utilisateur :</h1><hr>
+               <form th:action="@{editAnnonceur}" method="post" th:object="${user}">
               <div class="row">
-              	  <div class="bio-row">
-                      <p><span>Username </span>: <span style="font-weight:bold" th:text="${user.username}"> </span></p>
-                  <hr></div>
-                  <div class="bio-row">
-                      <p><span>Email </span>: <span style="font-weight:bold" th:text="${user.email}"> </span></p>
-                  <hr></div>
-                  <div class="bio-row">
-                      <p><span>Nom </span>: <span style="font-weight:bold" th:text="${user.nom}"> </span></p>
-                  <hr></div>
-                  <div class="bio-row">
-                      <p><span>Prenom </span>: <span style="font-weight:bold" th:text="${user.prenom}"> </span></p>
-                  <hr></div>
-                  <div class="bio-row">
-                      <p><span>Nationnalite </span>: <span  style = "font-weight:bold;text-transform:capitalize;" th:text="${user.nationalite}"> </span></p>
-                  <hr></div>
-                  
-                  <div class="bio-row">
-                      <p><span>Emploi </span>: <span style ="font-weight:bold;text-transform:capitalize;" th:text="${user.emploi}"> </span></p>
-                  <hr></div>
-                  
-                  <div class="bio-row">
-                      <p><span>Téléphone </span>: <span style="font-weight:bold" th:text="${user.tel}"> </span></p>
-                  <hr></div>
-                  <div class="bio-row">
-                      <p><span>Date Naissance</span>: <span style="font-weight:bold" th:text="${#dates.format(user.dateNaissance, 'dd-MMM-yyyy')}"> </span></p>
-                  <hr></div>
-                  
-                  
-                  
-                  <div class="bio-roww">
-                      <p><span>Adresse   </span>   : <span style="font-weight:bold" th:text="${user.adresse}"> </span></p>
+              
+  				  <input type="hidden" name="idOldUs" th:value="${idOldUs}"/> <br>
+  				  <div class="bio-row">
+                      <p><span>Username </span>: <span><input type="text" th:field="*{username}"/> </span></p>
                   </div>
+                  <div class="bio-row">
+                      <p><span>Mot de passe </span>: <span> <input type="text" th:field="*{password}"/> </span></p>
+                  </div>
+                  <div class="bio-row"> 
+                      <p><span>Nom </span>: <span><input type="text"  th:field="*{nom}"/> </span></p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Prénom </span>: <span><input type="text"  th:field="*{prenom}"/> </span></p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Email </span>: <span> <input type="text" th:field="*{email}"/> </span></p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Téléphone </span>: <span> <input type="text" th:field="*{tel}"/> </span></p>
+                  </div>
+                  
+                  <div class="bio-row">
+                      <p><span>Nationnalite </span>: <span><input type="text" th:field="*{nationalite}"/> </span></p>
+                  </div>
+                  
+                  <div class="bio-row">
+                      <p><span>Emploi </span>: <span> <input type="text" th:field="*{emploi}"/> </span></p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Date Naissance</span>: <span> <input type="date" th:field="*{dateNaissance}"/> </span></p>
+                  </div>
+                  <div class="bio-row">
+                      <p><span>Adresse</span>: <span> <input type="text" th:field="*{adresse}"/> </span></p>
+                  </div>
+                  
+                  
+                  
+
+                
               </div>
+              		<div>
+                     	<button class="btn btn-warning" type="submit">Modifier</button>
+                  	</div>
+                  	 </form> 
           </div>
       </div>
       
+     
   </div>
 </div>
 </div>
@@ -496,7 +496,8 @@ font-family:cursive
 
 
 
-
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 	
 </script>
