@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-
+//comment
 @Entity
 public class Annonce {
 	@Id
